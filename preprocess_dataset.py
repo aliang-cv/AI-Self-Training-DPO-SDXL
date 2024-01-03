@@ -258,13 +258,13 @@ if __name__ == "__main__":
     
     train_resize = transforms.Resize(
         args.resolution, interpolation=transforms.InterpolationMode.BILINEAR
-    )
+    )                                                                               # resize尺寸
     train_crop = (
         transforms.CenterCrop(args.resolution)
         if args.center_crop
         else transforms.RandomCrop(args.resolution)
-    )
-    train_flip = transforms.RandomHorizontalFlip(p=1.0)
+    )                                                                               # 中心裁剪
+    train_flip = transforms.RandomHorizontalFlip(p=1.0)                             #
     train_transforms = transforms.Compose(
         [transforms.ToTensor(), transforms.Normalize([0.5], [0.5])]
     )

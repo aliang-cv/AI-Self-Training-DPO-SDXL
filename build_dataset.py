@@ -56,7 +56,7 @@ def main(args):
     # scorer_list = [(CLIPScorer, 0.4), (AestheticScorer, 0.2), (VQAScorer, 0.4)]
     scorer_list = [(CLIPScorer, 0.6), (AestheticScorer, 0.4)]
     
-    
+
     # Load prompts
     with open(args.prompt_path, "r") as file:
         prompts = json.load(file)
@@ -104,7 +104,8 @@ def main(args):
     ds = ds.cast_column("good_jpg", datasets.Image())
     ds = ds.cast_column("bad_jpg", datasets.Image())
     ds.save_to_disk(args.output_dir)
-    
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -121,7 +122,7 @@ if __name__ == "__main__":
         "--prompt_path", type=str, default="dataset/prompts_squeeze.json"
     )
     parser.add_argument("--num_images", type=int, default=4)
-    parser.add_argument("--device", type=str, default="cuda:0,cuda:1,cuda:2,cuda:3,cuda:4,cuda:5,cuda:6,cuda:7,cuda:0,cuda:1,cuda:2,cuda:3,cuda:4,cuda:5,cuda:6,cuda:7,cuda:0,cuda:1,cuda:2,cuda:3,cuda:4,cuda:5,cuda:6,cuda:7,cuda:0,cuda:1,cuda:2,cuda:3,cuda:4,cuda:5,cuda:6,cuda:7,cuda:0,cuda:1,cuda:2,cuda:3,cuda:4,cuda:5,cuda:6,cuda:7")
+    parser.add_argument("--device", type=str, default="cuda:0,cuda:1,cuda:2,cuda:3,cuda:4,cuda:5")
     args = parser.parse_args()
 
     main(args)
